@@ -1,0 +1,293 @@
+# ===========================
+# Python
+# ===========================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+pytestdebug.log
+
+# ===========================
+# Virtual Environments
+# ===========================
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Environment variables
+.env.local
+.env.*.local
+*.env
+
+# ===========================
+# IDE / Editors
+# ===========================
+# VSCode
+.vscode/
+*.code-workspace
+
+# PyCharm / IntelliJ
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Vim
+*.swp
+*.swo
+*~
+.vim/
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# ===========================
+# Jupyter Notebooks
+# ===========================
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+Untitled*.ipynb
+
+# ===========================
+# Machine Learning / Model Files
+# ===========================
+# Model weights and checkpoints (IMPORTANT: Don't commit large model files)
+weight/
+weights/
+*.pth
+*.pt
+*.ckpt
+*.h5
+*.pb
+*.onnx
+*.tflite
+*.safetensors
+
+# Except for config files
+!weight/.gitkeep
+!weights/.gitkeep
+
+# Training checkpoints
+checkpoints/
+*.ckpt
+checkpoint/
+
+# TensorBoard logs
+runs/
+tensorboard/
+
+# Weights & Biases
+wandb/
+
+# MLflow
+mlruns/
+
+# ===========================
+# Data Files (Large)
+# ===========================
+# Raw data
+data/
+datasets/
+Dataset/
+YoloDataset/
+raw_data/
+processed_data/
+
+# Except for sample or documentation data
+!data/samples/
+!data/README.md
+!data/.gitkeep
+!datasets/README.md
+!datasets/.gitkeep
+
+# Image and video files (large assets)
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.bmp
+*.tiff
+*.tif
+*.mp4
+*.avi
+*.mov
+*.mkv
+
+# Except for documentation images
+!docs/**/*.png
+!docs/**/*.jpg
+!docs/**/*.jpeg
+!docs/**/*.gif
+!README*.png
+!README*.jpg
+
+# ===========================
+# Results (Generated)
+# ===========================
+results/
+outputs/
+output/
+predictions/
+*_results/
+*_output/
+analysis_output/
+inference_results/
+vis/
+visualizations/
+
+# ===========================
+# Logs
+# ===========================
+logs/
+*.log
+*.log.*
+*.out
+*.err
+
+# ===========================
+# Datasets & Annotations
+# ===========================
+annotations/
+labels/
+*.json.bak
+coco_annotations/
+
+# ===========================
+# Docker
+# ===========================
+# Docker volumes and container data
+docker-compose.override.yml
+.dockerignore
+*.docker
+
+# ===========================
+# OS Generated
+# ===========================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+.directory
+.Trash-*
+
+# ===========================
+# Temporary Files
+# ===========================
+*.tmp
+*.temp
+*.bak
+*.swp
+*~
+tmp/
+temp/
+
+# ===========================
+# Archives
+# ===========================
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.rar
+*.7z
+
+# Except for required archives
+!requirements/*.tar.gz
+
+# ===========================
+# Cache Directories
+# ===========================
+.cache/
+*.cache
+__pypackages__/
+
+# ===========================
+# Security
+# ===========================
+# API keys and secrets
+secrets/
+*.key
+*.pem
+*.cert
+*.crt
+.secrets
+
+# ===========================
+# Project Specific
+# ===========================
+# Git submodules build artifacts (if any)
+Grounded-Segment-Anything/build/
+GroundingDINO/build/
+Personalize-SAM/build/
+sam-hq/build/
+recognize-anything/build/
+
+# Testing
+.pytest_cache/
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Documentation builds
+docs/_build/
+site/

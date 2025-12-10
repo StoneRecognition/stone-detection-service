@@ -1,0 +1,67 @@
+# ============================================================================
+# Stone Detection Service - Object Detection Requirements
+# ============================================================================
+# Dependencies for object detection models: YOLO, Detectron2, Mask R-CNN, etc.
+# Install: pip install -r requirements/requirements-detection.txt
+# ============================================================================
+
+# ----------------------------------------------------------------------------
+# First install core requirements:
+# pip install -r requirements/requirements.txt
+# ----------------------------------------------------------------------------
+
+# ============================================================================
+# YOLO (Ultralytics)
+# ============================================================================
+# YOLOv8, YOLOv9, YOLOv10, YOLO11 - Unified detection framework
+ultralytics>=8.0.0
+
+# ============================================================================
+# Detectron2 (Facebook AI Research)
+# ============================================================================
+# Provides: Faster R-CNN, Mask R-CNN, RetinaNet, etc.
+# 
+# Installation (pick one based on your CUDA version):
+# 
+# For CUDA 11.8:
+# pip install detectron2 -f https://dl.fbaipublicfiles.com/detectron2/wheels/cu118/torch2.1/index.html
+#
+# For CUDA 12.1:
+# pip install detectron2 -f https://dl.fbaipublicfiles.com/detectron2/wheels/cu121/torch2.1/index.html
+#
+# From source (recommended for latest features):
+# pip install git+https://github.com/facebookresearch/detectron2.git
+#
+# Note: Uncomment the line below if installing from source
+# detectron2 @ git+https://github.com/facebookresearch/detectron2.git
+
+# Detectron2 dependencies
+pycocotools>=2.0.6
+fvcore>=0.1.5
+
+# ============================================================================
+# MMDetection (OpenMMLab)
+# ============================================================================
+# Alternative detection framework with many models
+# 
+# Installation:
+# pip install mmdet
+# pip install mim
+# mim install mmcv
+#
+# Note: Uncomment if using MMDetection
+mmdet>=3.0.0
+mmcv>=2.0.0
+mmengine>=0.7.0
+
+# ============================================================================
+# Additional Detection Utilities
+# ============================================================================
+# NMS and detection helpers
+nms>=0.1.0
+
+# Bounding box utilities
+shapely>=2.0.0
+
+# COCO API extensions
+pycocotools>=2.0.6

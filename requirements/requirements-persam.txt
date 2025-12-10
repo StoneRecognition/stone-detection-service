@@ -1,0 +1,67 @@
+# ============================================================================
+# Stone Detection Service - PerSAM-F & Grounded-SAM Pipeline Requirements
+# ============================================================================
+# Dependencies for PerSAM-F and Grounded-SAM automated stone detection pipelines
+# 
+# IMPORTANT: Some packages require special installation. Follow the order below.
+# ============================================================================
+
+# ----------------------------------------------------------------------------
+# STEP 1: Install PyTorch FIRST (required before other packages)
+# ----------------------------------------------------------------------------
+#  pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+# 
+# Then install core requirements:
+# pip install -r requirements/requirements.txt
+
+# ----------------------------------------------------------------------------
+# STEP 2: Install Grounding DINO (requires PyTorch to be pre-installed)
+# ----------------------------------------------------------------------------
+# Clone and install locally with --no-build-isolation:
+#
+# git clone https://github.com/IDEA-Research/GroundingDINO.git
+# cd GroundingDINO
+# pip install --no-build-isolation -e .
+# cd ..
+#
+# OR use pip with --no-build-isolation:
+#  pip install --no-build-isolation git+https://github.com/IDEA-Research/GroundingDINO.git
+
+# ----------------------------------------------------------------------------
+# STEP 3: Install Segment Anything (if not already from requirements-segmentation.txt)
+# ----------------------------------------------------------------------------
+# pip install git+https://github.com/facebookresearch/segment-anything.git
+
+# ----------------------------------------------------------------------------
+# STEP 4: Install RAM & Tag2Text (optional, for automatic labeling)
+# ----------------------------------------------------------------------------
+
+# git clone https://github.com/xinyu1205/recognize-anything.git
+#  pip install -r ./recognize-anything/requirements.txt
+#  pip install -e ./recognize-anything/
+# ============================================================================
+# Python Dependencies (install these after the above)
+# ============================================================================
+
+# Supervision - Detection Utilities
+supervision>=0.16.0
+
+# Stable Diffusion Inpainting (for grounded_sam_inpaint)
+diffusers[torch]>=0.21.0
+accelerate>=0.20.0
+transformers>=4.30.0
+
+# PerSAM-F Dependencies
+focal-loss-torch>=0.1.0
+
+# Additional Utilities
+tqdm>=4.65.0
+scikit-image>=0.21.0
+
+# ============================================================================
+# Quick Install Script (run after PyTorch is installed):
+# ============================================================================
+# pip install --no-build-isolation git+https://github.com/IDEA-Research/GroundingDINO.git
+# pip install git+https://github.com/facebookresearch/segment-anything.git
+# pip install supervision>=0.16.0 diffusers[torch] accelerate transformers focal-loss-torch tqdm scikit-image
+# ============================================================================

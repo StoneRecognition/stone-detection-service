@@ -1,0 +1,97 @@
+# ============================================================================
+# Stone Detection Service - Segmentation Models Requirements
+# ============================================================================
+# Dependencies for segmentation: SAM, SAM2, MobileSAM, NanoSAM, etc.
+# Install: pip install -r requirements/requirements-segmentation.txt
+# ============================================================================
+
+# ----------------------------------------------------------------------------
+# First install core requirements:
+# pip install -r requirements/requirements.txt
+# ----------------------------------------------------------------------------
+
+# ============================================================================
+# Segment Anything Model (SAM) - Meta AI
+# ============================================================================
+# Original SAM from Facebook Research
+# 
+# Installation from GitHub:
+# pip install git+https://github.com/facebookresearch/segment-anything.git
+#
+# Model weights download:
+# - sam_vit_h: https://dl.fbaipublicfiles.com/segment_anything/sam_vit_h_4b8939.pth
+# - sam_vit_l: https://dl.fbaipublicfiles.com/segment_anything/sam_vit_l_0b3195.pth
+# - sam_vit_b: https://dl.fbaipublicfiles.com/segment_anything/sam_vit_b_01ec64.pth
+segment-anything @ git+https://github.com/facebookresearch/segment-anything.git
+
+sam-hq @ git+https://github.com/SysCV/sam-hq.git
+
+# ============================================================================
+# SAM2 - Segment Anything Model 2
+# ============================================================================
+# SAM2 with video segmentation support
+# 
+# Installation from GitHub:
+# pip install git+https://github.com/facebookresearch/segment-anything-2.git
+#
+# Note: Uncomment if using SAM2
+sam2 @ git+https://github.com/facebookresearch/segment-anything-2.git
+
+# ============================================================================
+# MobileSAM - Lightweight SAM for Mobile/Edge Devices
+# ============================================================================
+# Faster inference with smaller model size
+# 
+# Installation from GitHub:
+# pip install git+https://github.com/ChaoningZhang/MobileSAM.git
+#
+# Model weights: https://github.com/ChaoningZhang/MobileSAM/releases
+mobile-sam @ git+https://github.com/ChaoningZhang/MobileSAM.git
+
+# ============================================================================
+# NanoSAM - Ultra-Lightweight SAM
+# ============================================================================
+# TensorRT-optimized for edge deployment
+# 
+# Installation from GitHub:
+# pip install git+https://github.com/NVIDIA-AI-IOT/nanosam.git
+#
+# Note: Requires TensorRT. Uncomment if using NanoSAM:
+# nanosam @ git+https://github.com/NVIDIA-AI-IOT/nanosam.git
+
+# ============================================================================
+# FastSAM - Fast Segment Anything
+# ============================================================================
+# CNN-based SAM alternative (faster inference)
+# 
+# Installation:
+# pip install git+https://github.com/CASIA-IVA-Lab/FastSAM.git
+#
+# Note: Uncomment if using FastSAM:
+# fastsam @ git+https://github.com/CASIA-IVA-Lab/FastSAM.git
+
+# ============================================================================
+# EfficientSAM - Efficient Segment Anything
+# ============================================================================
+# Efficient SAM with SAMI approach
+# 
+# Installation:
+# pip install git+https://github.com/yformer/EfficientSAM.git
+#
+# Note: Uncomment if using EfficientSAM:
+# efficientsam @ git+https://github.com/yformer/EfficientSAM.git
+
+# ============================================================================
+# SAM Dependencies (Common)
+# ============================================================================
+timm>=0.9.0
+efficientnet-pytorch>=0.7.1
+monai>=1.2.0
+
+# ============================================================================
+# ONNX Export (Optional - for model deployment)
+# ============================================================================
+onnx>=1.14.0
+onnxruntime>=1.15.0
+# For GPU inference with ONNX:
+# onnxruntime-gpu>=1.15.0

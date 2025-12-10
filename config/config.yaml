@@ -1,0 +1,278 @@
+# ==============================================================================
+# Stone Detection Service - Master Configuration
+# ==============================================================================
+# This is the central configuration file for all scripts and modules.
+# Edit values here instead of hardcoding in Python files.
+# ==============================================================================
+
+# ==============================================================================
+# PROJECT PATHS - Relative to project root
+# ==============================================================================
+paths:
+  # Data directories
+  data_root: "data"
+  raw_images: "data/raw"
+  processed_data: "data/processed"
+  annotations: "data/annotations"
+  datasets: "data/datasets"
+  
+  # Model weights
+  weights_dir: "weights"
+  
+  # Output directories
+  results_dir: "results"
+  visualizations: "results/visualizations"
+  json_output: "results/json_output"
+  reports: "results/reports"
+  
+  # Logs
+  logs_dir: "logs"
+  
+  # Config
+  config_dir: "config"
+
+# ==============================================================================
+# MODEL CONFIGURATIONS
+# ==============================================================================
+models:
+  # YOLO Detection Model
+  yolo:
+    path: "weight/yolo/best.pt"
+    confidence_threshold: 0.25
+    iou_threshold: 0.45
+    max_detections: 300
+    image_size: 640
+    
+  # MobileSAM Segmentation Model
+  mobilesam:
+    path: "weight/mobile_sam.pt"
+    points_per_side: 32
+    prediction_iou_threshold: 0.88
+    stability_score_threshold: 0.95
+    
+  # U-Net Segmentation Model
+  unet:
+    path: "weight/unet_model.pt"
+    in_channels: 3
+    out_channels: 1
+    input_size: [256, 256]
+    
+# SE-UNet Model
+  se_unet:
+    path: "weight/se_unet_model.pt"
+    in_channels: 3
+    out_channels: 1
+    use_attention: true
+
+  # SAM (Full) - Segment Anything Model
+  sam:
+    checkpoint: "weight/sam_vit_h_4b8939.pth"
+    model_type: "vit_h"
+    
+  # Grounding DINO - Open-Set Object Detection
+  grounding_dino:
+    config: "GroundingDINO/groundingdino/config/GroundingDINO_SwinT_OGC.py"
+    checkpoint: "weight/groundingdino_swint_ogc.pth"
+    checkpoint_swinb: "weight/groundingdino_swinb_cogcoor.pth"
+    box_threshold: 0.3
+    text_threshold: 0.25
+    
+  # RAM - Recognize Anything Model
+  ram:
+    checkpoint: "weight/ram_swin_large_14m.pth"
+    image_size: 384
+    vit: "swin_l"
+    
+  # Tag2Text - Image Tagging
+  tag2text:
+    checkpoint: "weight/tag2text_swin_14m.pth"
+    image_size: 384
+    threshold: 0.68
+
+# ==============================================================================
+# TRAINING CONFIGURATION
+# ==============================================================================
+training:
+  # General settings
+  epochs: 100
+  batch_size: 16
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  
+  # Learning rate scheduler
+  scheduler:
+    type: "cosine"  # cosine, step, plateau
+    step_size: 30
+    gamma: 0.1
+    patience: 10
+    
+  # Data augmentation
+  augmentation:
+    enabled: true
+    horizontal_flip: true
+    vertical_flip: true
+    rotation: 15
+    brightness: 0.2
+    contrast: 0.2
+    
+  # Checkpointing
+  checkpoints:
+    save_best: true
+    save_every: 10
+    path: "weight/checkpoints"
+    
+  # Early stopping
+  early_stopping:
+    enabled: true
+    patience: 15
+    min_delta: 0.001
+
+# ==============================================================================
+# INFERENCE CONFIGURATION
+# ==============================================================================
+inference:
+  # Device settings
+  device: "auto"  # auto, cuda, cpu
+  
+  # Batch processing
+  batch_size: 8
+  
+  # Post-processing
+  postprocess:
+    kernel_size: 5
+    min_area: 100
+    gaussian_blur: 3
+    
+  # Ensemble settings
+  ensemble:
+    coverage_threshold: 0.7
+    fill_missed_areas: true
+    detail_enhancement: true
+    
+  # Output format
+  output:
+    save_masks: true
+    save_overlay: true
+    save_json: true
+    overlay_alpha: 0.5
+
+# ==============================================================================
+# GPU & HARDWARE OPTIMIZATION
+# ==============================================================================
+hardware:
+  # GPU settings
+  gpu:
+    memory_fraction: 0.95
+    enable_optimization: true
+    allow_memory_growth: true
+    mixed_precision: true
+    
+  # CPU settings
+  cpu:
+    max_workers: 8
+    enable_parallel_io: true
+    
+  # Memory settings
+  memory:
+    ram_usage_limit: 0.8
+    enable_memory_mapping: true
+    cache_size_gb: 8
+
+# ==============================================================================
+# PROCESSING PIPELINE
+# ==============================================================================
+processing:
+  # Parameter testing
+  max_combinations: 5000
+  quality_level: "balanced"  # ultra_fast, fast, balanced, thorough
+  
+  # Batch settings
+  batch_size: 200
+  progress_save_interval: 200
+  
+  # Validation
+  enable_parameter_validation: true
+  skip_invalid_configs: true
+
+# ==============================================================================
+# LOGGING CONFIGURATION
+# ==============================================================================
+logging:
+  level: "INFO"  # DEBUG, INFO, WARNING, ERROR
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  
+  # File logging
+  file:
+    enabled: true
+    path: "logs/app.log"
+    max_size: 10485760  # 10MB
+    backup_count: 5
+    rotation: true
+    
+  # Console logging
+  console:
+    enabled: true
+    colorized: true
+
+# ==============================================================================
+# DATA LOADING
+# ==============================================================================
+data:
+  # Supported formats
+  image_extensions: [".jpg", ".jpeg", ".png", ".bmp", ".tiff"]
+  annotation_format: "coco"  # coco, yolo, voc
+  
+  # Preprocessing
+  preprocessing:
+    resize: [640, 640]
+    normalize: true
+    mean: [0.485, 0.456, 0.406]
+    std: [0.229, 0.224, 0.225]
+    
+  # Data splits
+  splits:
+    train: 0.8
+    val: 0.1
+    test: 0.1
+    seed: 42
+
+# ==============================================================================
+# API / SERVICE CONFIGURATION (if running as service)
+# ==============================================================================
+service:
+  host: "0.0.0.0"
+  port: 8000
+  workers: 4
+  timeout: 300
+  max_upload_size: 104857600  # 100MB
+
+# ==============================================================================
+# PerSAM-F CONFIGURATION (Personalized SAM Fine-tuning)
+# ==============================================================================
+persam:
+  # Reference generation settings
+  reference:
+    text_prompt: "stone contaminant"  # Grounding DINO prompt
+    confidence_threshold: 0.3         # Detection confidence threshold
+    use_point_prompt: false           # Use point vs box prompt for SAM
+  
+  # Fine-tuning settings
+  training:
+    learning_rate: 0.0001
+    iterations: 1000
+    sam_type: "vit_h"        # vit_h, vit_l, vit_b, vit_t (mobile)
+    output_weights: "weight/persam_stone.pth"
+  
+  # Inference settings  
+  inference:
+    points_per_side: 32      # Grid density for segment-everything
+    iou_threshold: 0.7       # Minimum IoU for valid masks
+    stability_threshold: 0.9 # Mask stability threshold
+    min_mask_area: 100       # Minimum mask area in pixels
+    
+  # Output settings
+  output:
+    save_masks: true
+    save_bboxes: true
+    save_overlays: true
+    format: "coco"           # coco, yolo, json

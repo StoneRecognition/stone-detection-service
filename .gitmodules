@@ -1,0 +1,115 @@
+# =============================================================================
+# Prioritized Modules (Active)
+# =============================================================================
+
+# GroundingDINO - Text-guided object detection
+[submodule "GroundingDINO"]
+	path = GroundingDINO
+	url = https://github.com/IDEA-Research/GroundingDINO.git
+	branch = main
+
+# Recognize Anything - Contains: RAM, RAM+, TAG2TEXT
+[submodule "recognize-anything"]
+	path = recognize-anything
+	url = https://github.com/xinyu1205/recognize-anything.git
+	branch = main
+
+# SAM-HQ - High Quality variant of Segment Anything Model (SAM)
+[submodule "sam-hq"]
+	path = sam-hq
+	url = https://github.com/SysCV/sam-hq.git
+	branch = main
+
+# Grounded-SAM - Combined GroundingDINO + SAM pipeline
+[submodule "Grounded-Segment-Anything"]
+	path = Grounded-Segment-Anything
+	url = https://github.com/IDEA-Research/Grounded-Segment-Anything.git
+	branch = main
+
+# MobileSAM - Fast lightweight SAM for mobile
+# [submodule "MobileSAM"]
+#     path = MobileSAM
+#     url = https://github.com/ChaoningZhang/MobileSAM.git
+#     branch = master
+
+# GenSAM - Generalized SAM for Auto Segmentation
+# [submodule "GenSAM"]
+#     path = GenSAM
+#     url = https://github.com/jbeomlee93/GenSAM.git
+#     branch = main
+
+# Personalize-SAM - Personalizing Segment Anything Model with One-Shot
+[submodule "PerSAM"]
+    path = Personalize-SAM
+    url = https://github.com/ZrrSkywalker/Personalize-SAM.git
+    branch = main
+
+# =============================================================================
+# R&D Modules (Commented Out)
+# =============================================================================
+
+# SAM - Original Segment Anything Model from Meta
+# [submodule "segment-anything"]
+#     path = segment-anything
+#     url = https://github.com/facebookresearch/segment-anything.git
+#     branch = main
+
+# SAM2 - Meta's improved Segment Anything Model
+# [submodule "sam2"]
+#     path = sam2
+#     url = https://github.com/facebookresearch/segment-anything-2.git
+#     branch = main
+
+# YOLO-World - Real-time open-vocabulary detection
+# [submodule "YOLO-World"]
+#     path = YOLO-World
+#     url = https://github.com/AILab-CVC/YOLO-World.git
+#     branch = master
+
+# OWL-ViT - Google's open-vocabulary detector
+# [submodule "OWLv2"]
+#     path = OWLv2
+#     url = https://github.com/google-research/scenic.git
+#     branch = main
+
+# Florence-2 - Microsoft's vision foundation model
+# [submodule "Florence-2"]
+#     path = Florence-2
+#     url = https://huggingface.co/microsoft/Florence-2-large
+#     branch = main
+
+# DINO (not GroundingDINO) - Self-supervised features
+# [submodule "dinov2"]
+#     path = dinov2
+#     url = https://github.com/facebookresearch/dinov2.git
+#     branch = main
+
+# OSX - One-Stage 3D Whole-body Mesh Recovery (pose estimation)
+# [submodule "OSX"]
+#     path = OSX
+#     url = https://github.com/IDEA-Research/OSX.git
+#     branch = main
+
+# VoxelNeXt - 3D Object Detection with Fully Sparse Networks
+# [submodule "VoxelNeXt"]
+#     path = VoxelNeXt
+#     url = https://github.com/dvlab-research/VoxelNeXt.git
+#     branch = main
+
+# Semantic SAM - Segment and Recognize Anything at Any Granularity
+# [submodule "Semantic-SAM"]
+#     path = Semantic-SAM
+#     url = https://github.com/UX-Decoder/Semantic-SAM.git
+#     branch = main
+
+# SEEM - Segment Everything Everywhere All at Once
+# [submodule "SEEM"]
+#     path = SEEM
+#     url = https://github.com/UX-Decoder/Segment-Everything-Everywhere-All-At-Once.git
+#     branch = main
+
+# OpenSeeD - Open-Vocabulary Segmentation with Decoupling
+# [submodule "OpenSeeD"]
+#     path = OpenSeeD
+#     url = https://github.com/IDEA-Research/OpenSeeD.git
+#     branch = main

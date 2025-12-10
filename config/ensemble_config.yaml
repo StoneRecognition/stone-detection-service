@@ -1,0 +1,71 @@
+# Ensemble Auto-Labeling Pipeline Configuration
+# ==============================================
+
+detection:
+  # Text prompts for stone detection (use multiple for max recall)
+  prompts:
+    - stone
+    - rock
+    - pebble
+    - gravel
+    - rubble
+    - boulder
+    - aggregate
+    - mineral
+  
+  # Detection thresholds (lower = more detections, higher = more precise)
+  # For maximum recall (catch all stones), use 0.15
+  # For balanced precision/recall, use 0.25
+  # For high precision (fewer false positives), use 0.35
+  box_threshold: 0.15
+  text_threshold: 0.15
+  
+  # NMS threshold for removing duplicate detections
+  nms_threshold: 0.5
+
+segmentation:
+  # Use SAM-HQ for better edge quality
+  use_sam_hq: true
+  
+  # Use multiple SAM variants and vote (slower but more accurate)
+  use_ensemble: false
+  
+  # Minimum number of models that must agree (1-4)
+  voting_threshold: 1
+
+auto_tagging:
+  # Use RAM model to auto-discover relevant tags
+  use_ram: true
+  
+  # Keywords to filter RAM tags (only include stone-related)
+  filter_keywords:
+    - stone
+    - rock
+    - mineral
+    - gravel
+    - pebble
+    - rubble
+    - rocky
+    - stony
+
+output:
+  # Minimum mask area in pixels (filter tiny detections)
+  min_mask_area: 50
+  
+  # Minimum contour points for polygon
+  min_contour_points: 6
+  
+  # Output formats to generate
+  formats:
+    - coco  # annotations.json
+    - yolo  # labels/*.txt
+
+model_paths:
+  grounding_dino_config: "GroundingDINO/groundingdino/config/GroundingDINO_SwinT_OGC.py"
+  grounding_dino_checkpoint: "weight/groundingdino_swint_ogc.pth"
+  sam_checkpoint: "weight/sam_vit_h_4b8939.pth"
+  sam_hq_checkpoint: "weight/sam_hq_vit_h.pth"
+  ram_checkpoint: "weight/ram_swin_large_14m.pth"
+
+# Hardware settings
+device: "cuda"
