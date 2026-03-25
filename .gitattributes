@@ -1,10 +1,26 @@
-*.jpg filter=lfs diff=lfs merge=lfs -text
-*.jpeg filter=lfs diff=lfs merge=lfs -text
-*.png filter=lfs diff=lfs merge=lfs -text
-*.pth filter=lfs diff=lfs merge=lfs -text
-*.pt filter=lfs diff=lfs merge=lfs -text
-*.ckpt filter=lfs diff=lfs merge=lfs -text
-*.h5 filter=lfs diff=lfs merge=lfs -text
-*.mp4 filter=lfs diff=lfs merge=lfs -text
-*.avi filter=lfs diff=lfs merge=lfs -text
-*.json filter=lfs diff=lfs merge=lfs -text
+# Line endings
+* text=auto
+
+# Text
+*.md text diff=markdown
+*.txt text
+*.py text diff=python
+*.yaml text
+*.yml text
+*.sh text eol=lf
+
+# Binaries (no Git LFS)
+*.jpg binary
+*.jpeg binary
+*.JPG binary
+*.png binary
+*.gif binary
+*.webp binary
+*.pt binary
+*.pth binary
+*.ckpt binary
+*.h5 binary
+*.onnx binary
+*.mp4 binary
+*.avi binary
+*.json binary

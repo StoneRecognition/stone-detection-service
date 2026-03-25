@@ -276,3 +276,10 @@ site/
 data/datasets/YoloDataset/
 data/datasets/rock_detections/**
 data/datasets/rocs_detections/**
+
+# Bulk assets removed from Git history (local only; formerly Git LFS)
+data/
+datasets/
+outputs/
+predictions/
+results/
